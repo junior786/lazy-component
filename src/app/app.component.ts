@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { DynamicService } from './service/dynamic.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'lazy-components';
+  selectedComponent = new BehaviorSubject('');
+  lazyImports = this.adService.getLazyImports();
+
+  constructor(private adService: DynamicService) {}
+
 }
